@@ -12,6 +12,8 @@
   
   <dt><strong><%= model_class.human_attribute_name(:taken_by) %>:</strong></dt>
   <dd><%= @task.taken_by %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
+  <dd><%= link_to 'Open in Google Maps', @task.location, :target => "_blank" %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @task.status %></dd>
   <dt><strong><%= model_class.human_attribute_name(:done) %>:</strong></dt>
