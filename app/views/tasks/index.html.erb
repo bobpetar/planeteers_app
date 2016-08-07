@@ -7,9 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:picture) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:taken_by) %></th>
+      <th><%= model_class.human_attribute_name(:location) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:done) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -20,26 +18,29 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= link_to task.id, task_path(task) %></td>
-        <td><%= task.name %></td>
-        <td><%= task.picture %></td>
-        <td><%= task.user_id %></td>
-        <td><%= task.taken_by %></td>
+        <td><%= link_to task.name, task_path(task) %></td>
+        <td><%= link_to 'Open in Google Maps', task.location, :target => "_blank" %></td>
         <td><%= task.status %></td>
         <td><%= task.done %></td>
         <td><%=l task.created_at %></td>
         <td>
-          <% if task.user == current_user %>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_task_path(task), :class => 'btn btn-default btn-xs' %>
+          <%= link_to 'Show', task_path(task), :class => 'btn btn-default btn-xs' %>
           
+          <% if task.user == current_user %>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_task_path(task), :class => 'btn btn-default btn-xs' %>
           <% else %>
             
             <% if task.status == false %>
-              <%= link_to 'Take', edit_task_path(task), :class => 'btn btn-default btn-xs' %>
+              <% if current_user.usertype == "planeteer" %>
+                <%= link_to 'Take', edit_task_path(task), :class => 'btn btn-default btn-xs' %>
+              <% end %>
             <% else %>
               <% if task.done == false %>
                 <% if task.taken_by == current_user.id %>
-                  <%= link_to 'End task', edit_task_path(task), :class => 'btn btn-default btn-xs' %>
+                  <% if current_user.usertype == "planeteer" %>
+                    <%= link_to 'End task', edit_task_path(task), :class => 'btn btn-default btn-xs' %>
+                  <% end %>
                 <% else %>
                   <p><small>In Progress</small></p>
                 <% end %>

@@ -5,13 +5,11 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @task.name %></dd>
+  <dd><%= @task.name %></dd><br>
   <dt><strong><%= model_class.human_attribute_name(:picture) %>:</strong></dt>
   <dd><%= image_tag(@task.picture.url, size:"300x300") if @task.picture? %></dd>
   
-  
-  <dt><strong><%= model_class.human_attribute_name(:taken_by) %>:</strong></dt>
-  <dd><%= @task.taken_by %></dd>
+  <br>
   <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
   <dd><%= link_to 'Open in Google Maps', @task.location, :target => "_blank" %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
@@ -28,13 +26,21 @@
               edit_task_path(@task), :class => 'btn btn-default' %>
 <% else %>
   <% if @task.status == false %>
-    <%= link_to 'Take', edit_task_path(@task), :class => 'btn btn-default' %>
+    <% if current_user.usertype == "planeteer" %>
+      <%= link_to 'Take', edit_task_path(@task), :class => 'btn btn-default' %>
+    <% end %>
   <% else %>
-    <% if current_user.id == @task.taken_by %>
-      <%= link_to 'End task', edit_task_path(@task), :class => 'btn btn-default' %>
+    <% if @task.done == false %>
+      <% if current_user.id == @task.taken_by %>
+        <% if current_user.usertype == "planeteer" %>
+          <%= link_to 'End task', edit_task_path(@task), :class => 'btn btn-default' %>
+        <% end %>
+      <% else %>
+        <p><small>In progress</small></p>
+      <% end %>  
     <% else %>
-      <p><small>In progress</small></p>
-    <% end %>  
+      <p><small>Finished</small></p>
+    <% end %>
   <% end %>
 <% end %>
 

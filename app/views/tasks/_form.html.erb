@@ -25,6 +25,13 @@
       <%=f.error_span(:name) %>
     </div>
     <div class="form-group">
+      <%= f.label :location, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_field :location, :class => 'form-control', placeholder: "Add link from google maps" %>
+      </div>
+      <%=f.error_span(:name) %>
+    </div>
+    <div class="form-group">
       <%= f.label :picture, :class => 'control-label col-lg-2' %>
       <div class="col-lg-10">
         <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', :class => 'form-control' %>
