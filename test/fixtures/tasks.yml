@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  picture: MyString
+  user: one
+  taken_by: 1
+  status: false
+  done: false
+
+two:
+  name: MyString
+  picture: MyString
+  user: two
+  taken_by: 1
+  status: false
+  done: false

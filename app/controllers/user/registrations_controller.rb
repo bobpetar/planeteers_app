@@ -8,5 +8,4 @@ class User::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.for(:account_update).push(:first_name, :last_name)
   end
   
-  
 end
