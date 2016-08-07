@@ -37,7 +37,7 @@
     <![endif]-->
   </head>
   <body>
-<!---
+    
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -59,9 +59,7 @@
               </li>
               <li class="col-md-1"> </li>
               <li class="col-md-3 logout">
-              ----->
-              <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %>
-              <!-----
+                <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %>
               </li>
             <% else %>
               <li class="col-md-4 pull-right">
@@ -72,7 +70,7 @@
         </div>
       </div>
     </div>
----->
+
 
     <div class="container">
       <div class="row">
@@ -81,15 +79,15 @@
           <%= yield %>
         </div>
         
-      </div><!--/row-->
+      </div>
 
-      <!---
+      
       <footer>
         <p>&copy; Company 2016</p>
       </footer>
-      ---->
+      
 
-    </div> <!-- /container -->
+    </div>
 
   </body>
 </html>

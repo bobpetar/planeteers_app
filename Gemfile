@@ -17,7 +17,6 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
-gem 'bootstrap', '~> 4.0.0.alpha3.1'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'carrierwave'
